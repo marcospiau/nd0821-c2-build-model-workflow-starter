@@ -18,3 +18,4 @@ dependencies:
   - pylint
   - pip:
       - wandb==0.12.10
+      - hydra-joblib-launcher

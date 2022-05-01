@@ -134,8 +134,14 @@ def go(config: DictConfig):
             ##################
             # Implement here #
             ##################
-
-            raise NotImplementedError
+            _ = mlflow.run(
+                f"{config['main']['components_repository']}/rest_regression_model",
+                "main",
+                parameters={
+                    "mlflow_model": 'random_forest_export:prod',
+                    "test_arfifact": 'test_data.csv:latest'
+                },
+            )
 
 
 if __name__ == "__main__":
