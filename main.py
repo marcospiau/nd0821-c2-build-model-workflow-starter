@@ -135,11 +135,13 @@ def go(config: DictConfig):
             # Implement here #
             ##################
             _ = mlflow.run(
-                f"{config['main']['components_repository']}/rest_regression_model",
+                f"{config['main']['components_repository']}/test_regression_model",
                 "main",
                 parameters={
-                    "mlflow_model": 'random_forest_export:prod',
-                    "test_arfifact": 'test_data.csv:latest'
+                    # "mlflow_model": 'random_forest_export:prod',
+                    # TODO: replace latest with prod
+                    "mlflow_model": 'random_forest_export:latest',
+                    "test_dataset": 'test_data.csv:latest'
                 },
             )
 

@@ -109,9 +109,11 @@ def go(args):
     input_example = X_val.iloc[:5]
     mlflow.sklearn.save_model(sk_model=sk_pipe,
                               path='random_forest_dir',
-                              signature=mlflow.models.infer_signature(
-                                  input_example,
-                                  sk_pipe.predict(input_example)),
+                            #   signature=mlflow.models.infer_signature(
+                            #       input_example,
+                            #       sk_pipe.predict(input_example),
+                            #   ),
+                              conda_env='./conda.yml',  ## need this to save correct sklearn version
                               input_example=input_example)
     ######################################
 
@@ -308,5 +310,4 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-
     go(args)
