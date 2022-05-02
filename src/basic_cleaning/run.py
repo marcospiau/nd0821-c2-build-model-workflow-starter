@@ -36,7 +36,7 @@ def go(args):
     df = df[(
         df['longitude'].between(-74.25, -73.50) &
         df['latitude'].between(40.5, 41.2)
-        )]
+        )].copy()
 
 
     artifact = wandb.Artifact(
